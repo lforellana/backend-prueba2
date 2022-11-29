@@ -1,0 +1,40 @@
+import {Entity, model, property} from '@loopback/repository';
+
+@model()
+export class Plazas extends Entity {
+  @property({
+    type: 'string',
+    id: true,
+    generated: true,
+  })
+  id?: string;
+
+  @property({
+    type: 'string',
+    required: true,
+  })
+  nombrePuesto: string;
+
+  @property({
+    type: 'string',
+    required: true,
+  })
+  area: string;
+
+  @property({
+    type: 'boolean',
+    required: true,
+  })
+  salarioSugerido: boolean;
+
+
+  constructor(data?: Partial<Plazas>) {
+    super(data);
+  }
+}
+
+export interface PlazasRelations {
+  // describe navigational properties here
+}
+
+export type PlazasWithRelations = Plazas & PlazasRelations;
