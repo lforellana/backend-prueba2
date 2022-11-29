@@ -1,0 +1,2485 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "backend-prueba2",
+        "version": "0.0.1",
+        "description": "backend-prueba2",
+        "contact": {
+            "name": "lforellana",
+            "email": "reckoner1991@gmail.com"
+        }
+    },
+    "paths": {
+        "/personals/count": {
+            "get": {
+                "x-controller-name": "PersonalController",
+                "x-operation-name": "count",
+                "tags": [
+                    "PersonalController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Personal model count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loopback.Count"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "where",
+                    "in": "query",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "title": "Personal.WhereFilter",
+                                "additionalProperties": true,
+                                "x-typescript-type": "@loopback/repository#Where<Personal>"
+                            }
+                        }
+                    }
+                }],
+                "operationId": "PersonalController.count"
+            }
+        },
+        "/personals/{id}/plazas": {
+            "get": {
+                "x-controller-name": "PersonalPlazasController",
+                "x-operation-name": "getPlazas",
+                "tags": [
+                    "PersonalPlazasController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Plazas belonging to Personal",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Plazas"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }],
+                "operationId": "PersonalPlazasController.getPlazas"
+            }
+        },
+        "/personals/{id}": {
+            "put": {
+                "x-controller-name": "PersonalController",
+                "x-operation-name": "replaceById",
+                "tags": [
+                    "PersonalController"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "Personal PUT success"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Personal"
+                            }
+                        }
+                    },
+                    "x-parameter-index": 1
+                },
+                "operationId": "PersonalController.replaceById"
+            },
+            "patch": {
+                "x-controller-name": "PersonalController",
+                "x-operation-name": "updateById",
+                "tags": [
+                    "PersonalController"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "Personal PATCH success"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PersonalPartial"
+                            }
+                        }
+                    },
+                    "x-parameter-index": 1
+                },
+                "operationId": "PersonalController.updateById"
+            },
+            "get": {
+                "x-controller-name": "PersonalController",
+                "x-operation-name": "findById",
+                "tags": [
+                    "PersonalController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Personal model instance",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PersonalWithRelations"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Personal.Filter"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "operationId": "PersonalController.findById"
+            },
+            "delete": {
+                "x-controller-name": "PersonalController",
+                "x-operation-name": "deleteById",
+                "tags": [
+                    "PersonalController"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "Personal DELETE success"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }],
+                "operationId": "PersonalController.deleteById"
+            }
+        },
+        "/personals": {
+            "post": {
+                "x-controller-name": "PersonalController",
+                "x-operation-name": "create",
+                "tags": [
+                    "PersonalController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Personal model instance",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Personal"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NewPersonal"
+                            }
+                        }
+                    }
+                },
+                "operationId": "PersonalController.create"
+            },
+            "patch": {
+                "x-controller-name": "PersonalController",
+                "x-operation-name": "updateAll",
+                "tags": [
+                    "PersonalController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Personal PATCH success count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loopback.Count"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "where",
+                    "in": "query",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "title": "Personal.WhereFilter",
+                                "additionalProperties": true,
+                                "x-typescript-type": "@loopback/repository#Where<Personal>"
+                            }
+                        }
+                    }
+                }],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PersonalPartial"
+                            }
+                        }
+                    }
+                },
+                "operationId": "PersonalController.updateAll"
+            },
+            "get": {
+                "x-controller-name": "PersonalController",
+                "x-operation-name": "find",
+                "tags": [
+                    "PersonalController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Array of Personal model instances",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/PersonalWithRelations"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "filter",
+                    "in": "query",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Personal.Filter1"
+                            }
+                        }
+                    }
+                }],
+                "operationId": "PersonalController.find"
+            }
+        },
+        "/ping": {
+            "get": {
+                "x-controller-name": "PingController",
+                "x-operation-name": "ping",
+                "tags": [
+                    "PingController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ping Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PingResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "operationId": "PingController.ping"
+            }
+        },
+        "/plazas/count": {
+            "get": {
+                "x-controller-name": "PlazasController",
+                "x-operation-name": "count",
+                "tags": [
+                    "PlazasController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Plazas model count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loopback.Count"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "where",
+                    "in": "query",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "title": "Plazas.WhereFilter",
+                                "additionalProperties": true,
+                                "x-typescript-type": "@loopback/repository#Where<Plazas>"
+                            }
+                        }
+                    }
+                }],
+                "operationId": "PlazasController.count"
+            }
+        },
+        "/plazas/{id}/personals": {
+            "post": {
+                "x-controller-name": "PlazasPersonalController",
+                "x-operation-name": "create",
+                "tags": [
+                    "PlazasPersonalController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Plazas model instance",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Personal"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NewPersonalInPlazas"
+                            }
+                        }
+                    },
+                    "x-parameter-index": 1
+                },
+                "operationId": "PlazasPersonalController.create"
+            },
+            "patch": {
+                "x-controller-name": "PlazasPersonalController",
+                "x-operation-name": "patch",
+                "tags": [
+                    "PlazasPersonalController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Plazas.Personal PATCH success count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loopback.Count"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "where",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "Personal.WhereFilter",
+                                    "additionalProperties": true,
+                                    "x-typescript-type": "@loopback/repository#Where<Personal>"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PersonalPartial"
+                            }
+                        }
+                    },
+                    "x-parameter-index": 1
+                },
+                "operationId": "PlazasPersonalController.patch"
+            },
+            "get": {
+                "x-controller-name": "PlazasPersonalController",
+                "x-operation-name": "find",
+                "tags": [
+                    "PlazasPersonalController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Array of Plazas has many Personal",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Personal"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": true
+                                }
+                            }
+                        }
+                    }
+                ],
+                "operationId": "PlazasPersonalController.find"
+            },
+            "delete": {
+                "x-controller-name": "PlazasPersonalController",
+                "x-operation-name": "delete",
+                "tags": [
+                    "PlazasPersonalController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Plazas.Personal DELETE success count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loopback.Count"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "where",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "Personal.WhereFilter",
+                                    "additionalProperties": true,
+                                    "x-typescript-type": "@loopback/repository#Where<Personal>"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "operationId": "PlazasPersonalController.delete"
+            }
+        },
+        "/plazas/{id}/requisitos": {
+            "post": {
+                "x-controller-name": "PlazasRequisitosController",
+                "x-operation-name": "create",
+                "tags": [
+                    "PlazasRequisitosController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Plazas model instance",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Requisitos"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NewRequisitosInPlazas"
+                            }
+                        }
+                    },
+                    "x-parameter-index": 1
+                },
+                "operationId": "PlazasRequisitosController.create"
+            },
+            "patch": {
+                "x-controller-name": "PlazasRequisitosController",
+                "x-operation-name": "patch",
+                "tags": [
+                    "PlazasRequisitosController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Plazas.Requisitos PATCH success count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loopback.Count"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "where",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "Requisitos.WhereFilter",
+                                    "additionalProperties": true,
+                                    "x-typescript-type": "@loopback/repository#Where<Requisitos>"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RequisitosPartial"
+                            }
+                        }
+                    },
+                    "x-parameter-index": 1
+                },
+                "operationId": "PlazasRequisitosController.patch"
+            },
+            "get": {
+                "x-controller-name": "PlazasRequisitosController",
+                "x-operation-name": "find",
+                "tags": [
+                    "PlazasRequisitosController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Array of Plazas has many Requisitos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Requisitos"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": true
+                                }
+                            }
+                        }
+                    }
+                ],
+                "operationId": "PlazasRequisitosController.find"
+            },
+            "delete": {
+                "x-controller-name": "PlazasRequisitosController",
+                "x-operation-name": "delete",
+                "tags": [
+                    "PlazasRequisitosController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Plazas.Requisitos DELETE success count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loopback.Count"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "where",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "Requisitos.WhereFilter",
+                                    "additionalProperties": true,
+                                    "x-typescript-type": "@loopback/repository#Where<Requisitos>"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "operationId": "PlazasRequisitosController.delete"
+            }
+        },
+        "/plazas/{id}": {
+            "put": {
+                "x-controller-name": "PlazasController",
+                "x-operation-name": "replaceById",
+                "tags": [
+                    "PlazasController"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "Plazas PUT success"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Plazas"
+                            }
+                        }
+                    },
+                    "x-parameter-index": 1
+                },
+                "operationId": "PlazasController.replaceById"
+            },
+            "patch": {
+                "x-controller-name": "PlazasController",
+                "x-operation-name": "updateById",
+                "tags": [
+                    "PlazasController"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "Plazas PATCH success"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PlazasPartial"
+                            }
+                        }
+                    },
+                    "x-parameter-index": 1
+                },
+                "operationId": "PlazasController.updateById"
+            },
+            "get": {
+                "x-controller-name": "PlazasController",
+                "x-operation-name": "findById",
+                "tags": [
+                    "PlazasController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Plazas model instance",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PlazasWithRelations"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Plazas.Filter"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "operationId": "PlazasController.findById"
+            },
+            "delete": {
+                "x-controller-name": "PlazasController",
+                "x-operation-name": "deleteById",
+                "tags": [
+                    "PlazasController"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "Plazas DELETE success"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }],
+                "operationId": "PlazasController.deleteById"
+            }
+        },
+        "/plazas": {
+            "post": {
+                "x-controller-name": "PlazasController",
+                "x-operation-name": "create",
+                "tags": [
+                    "PlazasController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Plazas model instance",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Plazas"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NewPlazas"
+                            }
+                        }
+                    }
+                },
+                "operationId": "PlazasController.create"
+            },
+            "patch": {
+                "x-controller-name": "PlazasController",
+                "x-operation-name": "updateAll",
+                "tags": [
+                    "PlazasController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Plazas PATCH success count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loopback.Count"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "where",
+                    "in": "query",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "title": "Plazas.WhereFilter",
+                                "additionalProperties": true,
+                                "x-typescript-type": "@loopback/repository#Where<Plazas>"
+                            }
+                        }
+                    }
+                }],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PlazasPartial"
+                            }
+                        }
+                    }
+                },
+                "operationId": "PlazasController.updateAll"
+            },
+            "get": {
+                "x-controller-name": "PlazasController",
+                "x-operation-name": "find",
+                "tags": [
+                    "PlazasController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Array of Plazas model instances",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/PlazasWithRelations"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "filter",
+                    "in": "query",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Plazas.Filter1"
+                            }
+                        }
+                    }
+                }],
+                "operationId": "PlazasController.find"
+            }
+        },
+        "/requisitos/count": {
+            "get": {
+                "x-controller-name": "RequisitosController",
+                "x-operation-name": "count",
+                "tags": [
+                    "RequisitosController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Requisitos model count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loopback.Count"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "where",
+                    "in": "query",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "title": "Requisitos.WhereFilter",
+                                "additionalProperties": true,
+                                "x-typescript-type": "@loopback/repository#Where<Requisitos>"
+                            }
+                        }
+                    }
+                }],
+                "operationId": "RequisitosController.count"
+            }
+        },
+        "/requisitos/{id}/plazas": {
+            "get": {
+                "x-controller-name": "RequisitosPlazasController",
+                "x-operation-name": "getPlazas",
+                "tags": [
+                    "RequisitosPlazasController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Plazas belonging to Requisitos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Plazas"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }],
+                "operationId": "RequisitosPlazasController.getPlazas"
+            }
+        },
+        "/requisitos/{id}": {
+            "put": {
+                "x-controller-name": "RequisitosController",
+                "x-operation-name": "replaceById",
+                "tags": [
+                    "RequisitosController"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "Requisitos PUT success"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Requisitos"
+                            }
+                        }
+                    },
+                    "x-parameter-index": 1
+                },
+                "operationId": "RequisitosController.replaceById"
+            },
+            "patch": {
+                "x-controller-name": "RequisitosController",
+                "x-operation-name": "updateById",
+                "tags": [
+                    "RequisitosController"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "Requisitos PATCH success"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RequisitosPartial"
+                            }
+                        }
+                    },
+                    "x-parameter-index": 1
+                },
+                "operationId": "RequisitosController.updateById"
+            },
+            "get": {
+                "x-controller-name": "RequisitosController",
+                "x-operation-name": "findById",
+                "tags": [
+                    "RequisitosController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Requisitos model instance",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RequisitosWithRelations"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Requisitos.Filter"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "operationId": "RequisitosController.findById"
+            },
+            "delete": {
+                "x-controller-name": "RequisitosController",
+                "x-operation-name": "deleteById",
+                "tags": [
+                    "RequisitosController"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "Requisitos DELETE success"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }],
+                "operationId": "RequisitosController.deleteById"
+            }
+        },
+        "/requisitos": {
+            "post": {
+                "x-controller-name": "RequisitosController",
+                "x-operation-name": "create",
+                "tags": [
+                    "RequisitosController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Requisitos model instance",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Requisitos"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NewRequisitos"
+                            }
+                        }
+                    }
+                },
+                "operationId": "RequisitosController.create"
+            },
+            "patch": {
+                "x-controller-name": "RequisitosController",
+                "x-operation-name": "updateAll",
+                "tags": [
+                    "RequisitosController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Requisitos PATCH success count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loopback.Count"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "where",
+                    "in": "query",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "title": "Requisitos.WhereFilter",
+                                "additionalProperties": true,
+                                "x-typescript-type": "@loopback/repository#Where<Requisitos>"
+                            }
+                        }
+                    }
+                }],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RequisitosPartial"
+                            }
+                        }
+                    }
+                },
+                "operationId": "RequisitosController.updateAll"
+            },
+            "get": {
+                "x-controller-name": "RequisitosController",
+                "x-operation-name": "find",
+                "tags": [
+                    "RequisitosController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Array of Requisitos model instances",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/RequisitosWithRelations"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "filter",
+                    "in": "query",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Requisitos.Filter1"
+                            }
+                        }
+                    }
+                }],
+                "operationId": "RequisitosController.find"
+            }
+        }
+    },
+    "servers": [{
+        "url": "/"
+    }],
+    "components": {
+        "schemas": {
+            "Plazas": {
+                "title": "Plazas",
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "nombrePuesto": {
+                        "type": "string"
+                    },
+                    "area": {
+                        "type": "string"
+                    },
+                    "salarioSugerido": {
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "nombrePuesto",
+                    "area",
+                    "salarioSugerido"
+                ],
+                "additionalProperties": false
+            },
+            "Personal": {
+                "title": "Personal",
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "nombre": {
+                        "type": "string"
+                    },
+                    "edad": {
+                        "type": "number"
+                    },
+                    "genero": {
+                        "type": "string"
+                    },
+                    "profesion": {
+                        "type": "string"
+                    },
+                    "plazasId": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "nombre",
+                    "edad",
+                    "genero",
+                    "profesion"
+                ],
+                "additionalProperties": false
+            },
+            "NewPersonal": {
+                "title": "NewPersonal",
+                "type": "object",
+                "description": "(tsType: Omit<Personal, 'id'>, schemaOptions: { title: 'NewPersonal', exclude: [ 'id' ] })",
+                "properties": {
+                    "nombre": {
+                        "type": "string"
+                    },
+                    "edad": {
+                        "type": "number"
+                    },
+                    "genero": {
+                        "type": "string"
+                    },
+                    "profesion": {
+                        "type": "string"
+                    },
+                    "plazasId": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "nombre",
+                    "edad",
+                    "genero",
+                    "profesion"
+                ],
+                "additionalProperties": false,
+                "x-typescript-type": "Omit<Personal, 'id'>"
+            },
+            "RequisitosWithRelations": {
+                "title": "RequisitosWithRelations",
+                "type": "object",
+                "description": "(tsType: RequisitosWithRelations, schemaOptions: { includeRelations: true })",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "nivelEducativo": {
+                        "type": "string"
+                    },
+                    "experianciaLaboral": {
+                        "type": "string"
+                    },
+                    "plazasId": {
+                        "type": "string"
+                    },
+                    "plazas": {
+                        "$ref": "#/components/schemas/PlazasWithRelations"
+                    }
+                },
+                "required": [
+                    "nivelEducativo",
+                    "experianciaLaboral"
+                ],
+                "additionalProperties": false,
+                "x-typescript-type": "RequisitosWithRelations"
+            },
+            "PlazasWithRelations": {
+                "title": "PlazasWithRelations",
+                "type": "object",
+                "description": "(tsType: PlazasWithRelations, schemaOptions: { includeRelations: true })",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "nombrePuesto": {
+                        "type": "string"
+                    },
+                    "area": {
+                        "type": "string"
+                    },
+                    "salarioSugerido": {
+                        "type": "boolean"
+                    },
+                    "personals": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/PersonalWithRelations"
+                        }
+                    },
+                    "requisitos": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/RequisitosWithRelations"
+                        }
+                    }
+                },
+                "required": [
+                    "nombrePuesto",
+                    "area",
+                    "salarioSugerido"
+                ],
+                "additionalProperties": false,
+                "x-typescript-type": "PlazasWithRelations"
+            },
+            "PersonalWithRelations": {
+                "title": "PersonalWithRelations",
+                "type": "object",
+                "description": "(tsType: PersonalWithRelations, schemaOptions: { includeRelations: true })",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "nombre": {
+                        "type": "string"
+                    },
+                    "edad": {
+                        "type": "number"
+                    },
+                    "genero": {
+                        "type": "string"
+                    },
+                    "profesion": {
+                        "type": "string"
+                    },
+                    "plazasId": {
+                        "type": "string"
+                    },
+                    "plazas": {
+                        "$ref": "#/components/schemas/PlazasWithRelations"
+                    }
+                },
+                "required": [
+                    "nombre",
+                    "edad",
+                    "genero",
+                    "profesion"
+                ],
+                "additionalProperties": false,
+                "x-typescript-type": "PersonalWithRelations"
+            },
+            "PersonalPartial": {
+                "title": "PersonalPartial",
+                "type": "object",
+                "description": "(tsType: Partial<Personal>, schemaOptions: { partial: true })",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "nombre": {
+                        "type": "string"
+                    },
+                    "edad": {
+                        "type": "number"
+                    },
+                    "genero": {
+                        "type": "string"
+                    },
+                    "profesion": {
+                        "type": "string"
+                    },
+                    "plazasId": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false,
+                "x-typescript-type": "Partial<Personal>"
+            },
+            "NewPersonalInPlazas": {
+                "title": "NewPersonalInPlazas",
+                "type": "object",
+                "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<Personal, 'id'>, 'plazasId'>, schemaOptions: { title: 'NewPersonalInPlazas', exclude: [ 'id' ], optional: [ 'plazasId' ] })",
+                "properties": {
+                    "nombre": {
+                        "type": "string"
+                    },
+                    "edad": {
+                        "type": "number"
+                    },
+                    "genero": {
+                        "type": "string"
+                    },
+                    "profesion": {
+                        "type": "string"
+                    },
+                    "plazasId": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "nombre",
+                    "edad",
+                    "genero",
+                    "profesion"
+                ],
+                "additionalProperties": false,
+                "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<Personal, 'id'>, 'plazasId'>"
+            },
+            "Requisitos": {
+                "title": "Requisitos",
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "nivelEducativo": {
+                        "type": "string"
+                    },
+                    "experianciaLaboral": {
+                        "type": "string"
+                    },
+                    "plazasId": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "nivelEducativo",
+                    "experianciaLaboral"
+                ],
+                "additionalProperties": false
+            },
+            "NewRequisitosInPlazas": {
+                "title": "NewRequisitosInPlazas",
+                "type": "object",
+                "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<Requisitos, 'id'>, 'plazasId'>, schemaOptions: { title: 'NewRequisitosInPlazas', exclude: [ 'id' ], optional: [ 'plazasId' ] })",
+                "properties": {
+                    "nivelEducativo": {
+                        "type": "string"
+                    },
+                    "experianciaLaboral": {
+                        "type": "string"
+                    },
+                    "plazasId": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "nivelEducativo",
+                    "experianciaLaboral"
+                ],
+                "additionalProperties": false,
+                "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<Requisitos, 'id'>, 'plazasId'>"
+            },
+            "RequisitosPartial": {
+                "title": "RequisitosPartial",
+                "type": "object",
+                "description": "(tsType: Partial<Requisitos>, schemaOptions: { partial: true })",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "nivelEducativo": {
+                        "type": "string"
+                    },
+                    "experianciaLaboral": {
+                        "type": "string"
+                    },
+                    "plazasId": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false,
+                "x-typescript-type": "Partial<Requisitos>"
+            },
+            "NewPlazas": {
+                "title": "NewPlazas",
+                "type": "object",
+                "description": "(tsType: Omit<Plazas, 'id'>, schemaOptions: { title: 'NewPlazas', exclude: [ 'id' ] })",
+                "properties": {
+                    "nombrePuesto": {
+                        "type": "string"
+                    },
+                    "area": {
+                        "type": "string"
+                    },
+                    "salarioSugerido": {
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "nombrePuesto",
+                    "area",
+                    "salarioSugerido"
+                ],
+                "additionalProperties": false,
+                "x-typescript-type": "Omit<Plazas, 'id'>"
+            },
+            "PlazasPartial": {
+                "title": "PlazasPartial",
+                "type": "object",
+                "description": "(tsType: Partial<Plazas>, schemaOptions: { partial: true })",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "nombrePuesto": {
+                        "type": "string"
+                    },
+                    "area": {
+                        "type": "string"
+                    },
+                    "salarioSugerido": {
+                        "type": "boolean"
+                    }
+                },
+                "additionalProperties": false,
+                "x-typescript-type": "Partial<Plazas>"
+            },
+            "NewRequisitos": {
+                "title": "NewRequisitos",
+                "type": "object",
+                "description": "(tsType: Omit<Requisitos, 'id'>, schemaOptions: { title: 'NewRequisitos', exclude: [ 'id' ] })",
+                "properties": {
+                    "nivelEducativo": {
+                        "type": "string"
+                    },
+                    "experianciaLaboral": {
+                        "type": "string"
+                    },
+                    "plazasId": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "nivelEducativo",
+                    "experianciaLaboral"
+                ],
+                "additionalProperties": false,
+                "x-typescript-type": "Omit<Requisitos, 'id'>"
+            },
+            "loopback.Count": {
+                "type": "object",
+                "title": "loopback.Count",
+                "x-typescript-type": "@loopback/repository#Count",
+                "properties": {
+                    "count": {
+                        "type": "number"
+                    }
+                }
+            },
+            "Personal.ScopeFilter": {
+                "type": "object",
+                "properties": {
+                    "offset": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "example": 100
+                    },
+                    "skip": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "order": {
+                        "oneOf": [{
+                                "type": "string"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "where": {
+                        "type": "object",
+                        "additionalProperties": true
+                    },
+                    "fields": {
+                        "oneOf": [{
+                                "type": "object",
+                                "properties": {},
+                                "additionalProperties": true
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "uniqueItems": true
+                            }
+                        ]
+                    },
+                    "include": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {},
+                            "additionalProperties": true
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "title": "Personal.ScopeFilter"
+            },
+            "Personal.IncludeFilter.Items": {
+                "title": "Personal.IncludeFilter.Items",
+                "type": "object",
+                "properties": {
+                    "relation": {
+                        "type": "string"
+                    },
+                    "scope": {
+                        "$ref": "#/components/schemas/Personal.ScopeFilter"
+                    }
+                }
+            },
+            "Personal.Filter": {
+                "type": "object",
+                "title": "Personal.Filter",
+                "properties": {
+                    "offset": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "example": 100
+                    },
+                    "skip": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "order": {
+                        "oneOf": [{
+                                "type": "string"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "fields": {
+                        "oneOf": [{
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "boolean"
+                                    },
+                                    "nombre": {
+                                        "type": "boolean"
+                                    },
+                                    "edad": {
+                                        "type": "boolean"
+                                    },
+                                    "genero": {
+                                        "type": "boolean"
+                                    },
+                                    "profesion": {
+                                        "type": "boolean"
+                                    },
+                                    "plazasId": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "additionalProperties": false
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "enum": [
+                                        "id",
+                                        "nombre",
+                                        "edad",
+                                        "genero",
+                                        "profesion",
+                                        "plazasId"
+                                    ],
+                                    "example": "id"
+                                },
+                                "uniqueItems": true
+                            }
+                        ],
+                        "title": "Personal.Fields"
+                    },
+                    "include": {
+                        "title": "Personal.IncludeFilter",
+                        "type": "array",
+                        "items": {
+                            "anyOf": [{
+                                    "$ref": "#/components/schemas/Personal.IncludeFilter.Items"
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "x-typescript-type": "@loopback/repository#Filter<Personal>"
+            },
+            "Personal.Filter1": {
+                "type": "object",
+                "title": "Personal.Filter",
+                "properties": {
+                    "offset": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "example": 100
+                    },
+                    "skip": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "order": {
+                        "oneOf": [{
+                                "type": "string"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "where": {
+                        "title": "Personal.WhereFilter",
+                        "type": "object",
+                        "additionalProperties": true
+                    },
+                    "fields": {
+                        "oneOf": [{
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "boolean"
+                                    },
+                                    "nombre": {
+                                        "type": "boolean"
+                                    },
+                                    "edad": {
+                                        "type": "boolean"
+                                    },
+                                    "genero": {
+                                        "type": "boolean"
+                                    },
+                                    "profesion": {
+                                        "type": "boolean"
+                                    },
+                                    "plazasId": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "additionalProperties": false
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "enum": [
+                                        "id",
+                                        "nombre",
+                                        "edad",
+                                        "genero",
+                                        "profesion",
+                                        "plazasId"
+                                    ],
+                                    "example": "id"
+                                },
+                                "uniqueItems": true
+                            }
+                        ],
+                        "title": "Personal.Fields"
+                    },
+                    "include": {
+                        "title": "Personal.IncludeFilter",
+                        "type": "array",
+                        "items": {
+                            "anyOf": [{
+                                    "$ref": "#/components/schemas/Personal.IncludeFilter.Items"
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "x-typescript-type": "@loopback/repository#Filter<Personal>"
+            },
+            "PingResponse": {
+                "type": "object",
+                "title": "PingResponse",
+                "properties": {
+                    "greeting": {
+                        "type": "string"
+                    },
+                    "date": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string"
+                    },
+                    "headers": {
+                        "type": "object",
+                        "properties": {
+                            "Content-Type": {
+                                "type": "string"
+                            }
+                        },
+                        "additionalProperties": true
+                    }
+                }
+            },
+            "Plazas.ScopeFilter": {
+                "type": "object",
+                "properties": {
+                    "offset": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "example": 100
+                    },
+                    "skip": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "order": {
+                        "oneOf": [{
+                                "type": "string"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "where": {
+                        "type": "object",
+                        "additionalProperties": true
+                    },
+                    "fields": {
+                        "oneOf": [{
+                                "type": "object",
+                                "properties": {},
+                                "additionalProperties": true
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "uniqueItems": true
+                            }
+                        ]
+                    },
+                    "include": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {},
+                            "additionalProperties": true
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "title": "Plazas.ScopeFilter"
+            },
+            "Plazas.IncludeFilter.Items": {
+                "title": "Plazas.IncludeFilter.Items",
+                "type": "object",
+                "properties": {
+                    "relation": {
+                        "type": "string"
+                    },
+                    "scope": {
+                        "$ref": "#/components/schemas/Plazas.ScopeFilter"
+                    }
+                }
+            },
+            "Plazas.Filter": {
+                "type": "object",
+                "title": "Plazas.Filter",
+                "properties": {
+                    "offset": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "example": 100
+                    },
+                    "skip": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "order": {
+                        "oneOf": [{
+                                "type": "string"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "fields": {
+                        "oneOf": [{
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "boolean"
+                                    },
+                                    "nombrePuesto": {
+                                        "type": "boolean"
+                                    },
+                                    "area": {
+                                        "type": "boolean"
+                                    },
+                                    "salarioSugerido": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "additionalProperties": false
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "enum": [
+                                        "id",
+                                        "nombrePuesto",
+                                        "area",
+                                        "salarioSugerido"
+                                    ],
+                                    "example": "id"
+                                },
+                                "uniqueItems": true
+                            }
+                        ],
+                        "title": "Plazas.Fields"
+                    },
+                    "include": {
+                        "title": "Plazas.IncludeFilter",
+                        "type": "array",
+                        "items": {
+                            "anyOf": [{
+                                    "$ref": "#/components/schemas/Plazas.IncludeFilter.Items"
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "x-typescript-type": "@loopback/repository#Filter<Plazas>"
+            },
+            "Plazas.Filter1": {
+                "type": "object",
+                "title": "Plazas.Filter",
+                "properties": {
+                    "offset": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "example": 100
+                    },
+                    "skip": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "order": {
+                        "oneOf": [{
+                                "type": "string"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "where": {
+                        "title": "Plazas.WhereFilter",
+                        "type": "object",
+                        "additionalProperties": true
+                    },
+                    "fields": {
+                        "oneOf": [{
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "boolean"
+                                    },
+                                    "nombrePuesto": {
+                                        "type": "boolean"
+                                    },
+                                    "area": {
+                                        "type": "boolean"
+                                    },
+                                    "salarioSugerido": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "additionalProperties": false
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "enum": [
+                                        "id",
+                                        "nombrePuesto",
+                                        "area",
+                                        "salarioSugerido"
+                                    ],
+                                    "example": "id"
+                                },
+                                "uniqueItems": true
+                            }
+                        ],
+                        "title": "Plazas.Fields"
+                    },
+                    "include": {
+                        "title": "Plazas.IncludeFilter",
+                        "type": "array",
+                        "items": {
+                            "anyOf": [{
+                                    "$ref": "#/components/schemas/Plazas.IncludeFilter.Items"
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "x-typescript-type": "@loopback/repository#Filter<Plazas>"
+            },
+            "Requisitos.ScopeFilter": {
+                "type": "object",
+                "properties": {
+                    "offset": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "example": 100
+                    },
+                    "skip": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "order": {
+                        "oneOf": [{
+                                "type": "string"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "where": {
+                        "type": "object",
+                        "additionalProperties": true
+                    },
+                    "fields": {
+                        "oneOf": [{
+                                "type": "object",
+                                "properties": {},
+                                "additionalProperties": true
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "uniqueItems": true
+                            }
+                        ]
+                    },
+                    "include": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {},
+                            "additionalProperties": true
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "title": "Requisitos.ScopeFilter"
+            },
+            "Requisitos.IncludeFilter.Items": {
+                "title": "Requisitos.IncludeFilter.Items",
+                "type": "object",
+                "properties": {
+                    "relation": {
+                        "type": "string"
+                    },
+                    "scope": {
+                        "$ref": "#/components/schemas/Requisitos.ScopeFilter"
+                    }
+                }
+            },
+            "Requisitos.Filter": {
+                "type": "object",
+                "title": "Requisitos.Filter",
+                "properties": {
+                    "offset": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "example": 100
+                    },
+                    "skip": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "order": {
+                        "oneOf": [{
+                                "type": "string"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "fields": {
+                        "oneOf": [{
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "boolean"
+                                    },
+                                    "nivelEducativo": {
+                                        "type": "boolean"
+                                    },
+                                    "experianciaLaboral": {
+                                        "type": "boolean"
+                                    },
+                                    "plazasId": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "additionalProperties": false
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "enum": [
+                                        "id",
+                                        "nivelEducativo",
+                                        "experianciaLaboral",
+                                        "plazasId"
+                                    ],
+                                    "example": "id"
+                                },
+                                "uniqueItems": true
+                            }
+                        ],
+                        "title": "Requisitos.Fields"
+                    },
+                    "include": {
+                        "title": "Requisitos.IncludeFilter",
+                        "type": "array",
+                        "items": {
+                            "anyOf": [{
+                                    "$ref": "#/components/schemas/Requisitos.IncludeFilter.Items"
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "x-typescript-type": "@loopback/repository#Filter<Requisitos>"
+            },
+            "Requisitos.Filter1": {
+                "type": "object",
+                "title": "Requisitos.Filter",
+                "properties": {
+                    "offset": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "example": 100
+                    },
+                    "skip": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "order": {
+                        "oneOf": [{
+                                "type": "string"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "where": {
+                        "title": "Requisitos.WhereFilter",
+                        "type": "object",
+                        "additionalProperties": true
+                    },
+                    "fields": {
+                        "oneOf": [{
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "boolean"
+                                    },
+                                    "nivelEducativo": {
+                                        "type": "boolean"
+                                    },
+                                    "experianciaLaboral": {
+                                        "type": "boolean"
+                                    },
+                                    "plazasId": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "additionalProperties": false
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "enum": [
+                                        "id",
+                                        "nivelEducativo",
+                                        "experianciaLaboral",
+                                        "plazasId"
+                                    ],
+                                    "example": "id"
+                                },
+                                "uniqueItems": true
+                            }
+                        ],
+                        "title": "Requisitos.Fields"
+                    },
+                    "include": {
+                        "title": "Requisitos.IncludeFilter",
+                        "type": "array",
+                        "items": {
+                            "anyOf": [{
+                                    "$ref": "#/components/schemas/Requisitos.IncludeFilter.Items"
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "x-typescript-type": "@loopback/repository#Filter<Requisitos>"
+            }
+        }
+    }
+}
