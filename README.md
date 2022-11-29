@@ -7,6 +7,9 @@
 
 !["Diagrama de clases"](https://app.genmymodel.com/api/projects/_QYzDoG9-Ee2ck8ytUMEi6A/diagrams/_QYzDo29-Ee2ck8ytUMEi6A/svg)
 
+### App HEROKU
+https://prueba2-lorellana.herokuapp.com/
+
 
 This application is generated using [LoopBack 4 CLI](https://loopback.io/doc/en/lb4/Command-line-interface.html) with the
 [initial project layout](https://loopback.io/doc/en/lb4/Loopback-application-layout.html).
